@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}AI Tutor - Learning Results{% endblock %}
+
+{% block header_actions %}
+<a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary">Home</a>
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Learning Results</h2>
+
+<div class="alert alert-success mb-4">
+    <h5>Objective Completed</h5>
+    <p class="mb-0">{{ learning_objective }}</p>
+</div>
+
+{% if mastery_levels %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Mastery Levels</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {% for topic, level in mastery_levels.items() %}
+            <div class="col-md-6 mb-3">
+                <h6>{{ topic }}</h6>
+                <div class="progress" style="height: 25px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ level * 100 }}%;" 
+                         aria-valuenow="{{ level * 100 }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ (level * 100)|round(1) }}%
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if completed_topics %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Completed Topics</h5>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            {% for topic in completed_topics %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ topic }}
+                <span class="badge bg-success rounded-pill">Completed</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Your Progress</h5>
+    </div>
+    <div class="card-body">
+        <p>Your learning progress has been saved. You can continue learning or start a new topic.</p>
+        <p><strong>User ID:</strong> <span class="user-id">{{ session.user_id }}</span> <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard()">Copy</button></p>
+        <div class="alert alert-info">
+            Save your User ID to continue this learning session later.
+        </div>
+    </div>
+</div>
+
+<div class="d-grid gap-2">
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function copyToClipboard() {
+        const userId = document.querySelector('.user-id').textContent;
+        navigator.clipboard.writeText(userId).then(function() {
+            alert('User ID copied to clipboard!');
+        }, function() {
+            alert('Failed to copy User ID. Please copy it manually.');
+        });
+    }
+</script>
+{% endblock %} 

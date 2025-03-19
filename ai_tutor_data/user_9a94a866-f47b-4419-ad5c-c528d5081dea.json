@@ -1,0 +1,50 @@
+{
+  "learning_objectives": {
+    "c5e3f451-e812-45df-8ff2-0b93d09997da": {
+      "title": "deep research",
+      "description": "deep research",
+      "created_at": "2025-03-18T18:08:38",
+      "study_plan": {
+        "topics": [
+          "Introduction",
+          "Key Concepts",
+          "Applications",
+          "Advanced Topics"
+        ],
+        "learning_path": [
+          "Introduction",
+          "Key Concepts",
+          "Applications",
+          "Advanced Topics"
+        ],
+        "estimated_time": {
+          "Introduction": "30 minutes",
+          "Key Concepts": "30 minutes",
+          "Applications": "30 minutes",
+          "Advanced Topics": "30 minutes"
+        },
+        "prerequisites": {}
+      },
+      "topic_progress": {
+        "Introduction": {
+          "mastery_level": 0.7,
+          "completed": true
+        },
+        "Key Concepts": {
+          "mastery_level": 0.7,
+          "completed": true
+        },
+        "Applications": {
+          "mastery_level": 0.0,
+          "completed": false
+        },
+        "Advanced Topics": {
+          "mastery_level": 0.0,
+          "completed": false
+        }
+      },
+      "quizzes": {}
+    }
+  },
+  "last_updated": "2025-03-18T18:08:38.926863"
+}

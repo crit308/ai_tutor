@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}AI Tutor - Setup{% endblock %}
+
+{% block header_actions %}
+<a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary">Back to Home</a>
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Setup New Learning Session</h2>
+
+<form method="POST" action="{{ url_for('setup') }}">
+    <div class="mb-3">
+        <label for="user_id" class="form-label">User ID (optional)</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Leave blank to generate a new ID">
+        <div class="form-text">A unique identifier to track your progress. If left blank, a random ID will be generated.</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="storage_dir" class="form-label">Storage Directory (optional)</label>
+        <input type="text" class="form-control" id="storage_dir" name="storage_dir" placeholder="Default: ~/.ai_tutor">
+        <div class="form-text">Directory to store your progress data. Leave blank to use the default location.</div>
+    </div>
+    
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="use_sqlite" name="use_sqlite" value="true">
+        <label class="form-check-label" for="use_sqlite">Use SQLite for storage</label>
+        <div class="form-text">If checked, SQLite will be used for storage instead of JSON files.</div>
+    </div>
+    
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Continue</button>
+    </div>
+</form>
+{% endblock %} 

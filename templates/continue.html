@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}AI Tutor - Continue Session{% endblock %}
+
+{% block header_actions %}
+<a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary">Back to Home</a>
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Continue Existing Session</h2>
+
+<form method="POST" action="{{ url_for('continue_session') }}">
+    <div class="mb-3">
+        <label for="user_id" class="form-label">User ID</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Enter your user ID" required>
+        <div class="form-text">The unique identifier that was assigned to your previous learning session.</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="storage_dir" class="form-label">Storage Directory (optional)</label>
+        <input type="text" class="form-control" id="storage_dir" name="storage_dir" placeholder="Default: ~/.ai_tutor">
+        <div class="form-text">Only specify if you used a custom storage location for your session data.</div>
+    </div>
+    
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="use_sqlite" name="use_sqlite" value="true">
+        <label class="form-check-label" for="use_sqlite">Use SQLite for storage</label>
+        <div class="form-text">Check this if your previous session used SQLite for storage.</div>
+    </div>
+    
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Continue Session</button>
+    </div>
+</form>
+{% endblock %} 

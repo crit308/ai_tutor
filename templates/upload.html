@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}AI Tutor - Upload Materials{% endblock %}
+
+{% block header_actions %}
+<a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary">Back to Home</a>
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Upload Learning Materials</h2>
+
+<form method="POST" action="{{ url_for('upload_materials') }}">
+    <div class="mb-4">
+        <label for="file_urls" class="form-label">File URLs or Paths</label>
+        <textarea class="form-control" id="file_urls" name="file_urls" rows="3" placeholder="Enter URLs or file paths, separated by commas"></textarea>
+        <div class="form-text">
+            Enter URLs to documents or file paths, separated by commas. 
+            If left blank, a sample file will be used for demonstration.
+        </div>
+    </div>
+    
+    <div class="alert alert-info">
+        <h5>Supported File Types</h5>
+        <p>The system supports various file formats including:</p>
+        <ul>
+            <li>PDF documents</li>
+            <li>Text files (.txt)</li>
+            <li>Web URLs (that can be accessed publicly)</li>
+        </ul>
+    </div>
+    
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Continue</button>
+    </div>
+</form>
+{% endblock %} 
